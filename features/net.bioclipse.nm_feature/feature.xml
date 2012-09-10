@@ -19,9 +19,10 @@
    </license>
 
    <requires>
-      <import feature="net.bioclipse.core_feature" version="2.4.0" match="greaterOrEqual"/>
-      <import feature="net.bioclipse.rdf_feature" version="2.4.0" match="greaterOrEqual"/>
+      <import feature="net.bioclipse.core_feature" version="2.5.0" match="greaterOrEqual"/>
+      <import feature="net.bioclipse.rdf_feature" version="2.5.0" match="greaterOrEqual"/>
       <import plugin="net.bioclipse.usermanager"/>
+      <import feature="net.bioclipse.opentox_feature" version="2.5.0"/>
    </requires>
 
    <plugin
