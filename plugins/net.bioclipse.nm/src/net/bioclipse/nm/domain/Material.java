@@ -21,6 +21,10 @@ public class Material extends BioObject implements IMaterial {
 		this.internalModel = new Nanomaterial(MaterialType.METALOXIDE);
 	}
 
+	public Material(Nanomaterial nmaterial) {
+		this.internalModel = nmaterial;
+	}
+
 	public Nanomaterial getInternalModel() {
 		return internalModel;
 	}

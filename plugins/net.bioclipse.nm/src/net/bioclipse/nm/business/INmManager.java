@@ -34,7 +34,13 @@ public interface INmManager extends IBioclipseManager {
 
     @Recorded
     @PublishedMethod(params = "IMaterial material, String filename",
-            methodSummary="Saves a material to file.")
+            methodSummary="Saves a material to file in the NMX format.")
     public void save(Material material, String filename)
     	          throws BioclipseException, UnsupportedEncodingException, CoreException;
+    
+    @Recorded
+    @PublishedMethod(params = "String filename",
+            methodSummary="Loads a material from a NMX file.")
+    public Material load(String filename)
+	          throws BioclipseException, UnsupportedEncodingException, CoreException;
 }
