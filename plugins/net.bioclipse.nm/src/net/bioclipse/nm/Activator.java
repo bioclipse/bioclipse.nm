@@ -1,5 +1,4 @@
-/*******************************************************************************
- * Copyright (c) 2012  Egon Willighagen <egonw@users.sf.net>
+/* Copyright (c) 2012  Egon Willighagen <egonw@users.sf.net>
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,14 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contact: http://www.bioclipse.net/
- ******************************************************************************/
+ */
 package net.bioclipse.nm;
 
-import net.bioclipse.nm.business.INmManager;
 import net.bioclipse.nm.business.IJavaNmManager;
 import net.bioclipse.nm.business.IJavaScriptNmManager;
+import net.bioclipse.nm.business.INmManager;
 
-import org.apache.log4j.Logger;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
@@ -23,8 +21,6 @@ import org.osgi.util.tracker.ServiceTracker;
  * The Activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
-
-    private static final Logger logger = Logger.getLogger(Activator.class);
 
     // The shared instance
     private static Activator plugin;
