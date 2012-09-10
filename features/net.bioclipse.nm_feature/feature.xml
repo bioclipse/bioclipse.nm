@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="net.bioclipse.nm_feature"
+      label="Bioclipse Nanomaterials"
+      version="2.5.0.qualifier"
+      provider-name="The Nanomaterials team"
+      plugin="net.bioclipse.nm">
+
+   <description>
+      Bioclipse Nanomaterials
+   </description>
+
+   <copyright>
+      Copyright (c) 2012  Egon Willighagen et al.
+   </copyright>
+
+   <license>
+      Eclipse Public License.
+   </license>
+
+   <requires>
+      <import feature="net.bioclipse.core_feature" version="2.4.0" match="greaterOrEqual"/>
+      <import feature="net.bioclipse.rdf_feature" version="2.4.0" match="greaterOrEqual"/>
+      <import plugin="net.bioclipse.usermanager"/>
+   </requires>
+
+   <plugin
+         id="net.bioclipse.nm"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
