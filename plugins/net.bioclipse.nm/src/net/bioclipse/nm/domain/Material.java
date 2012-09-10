@@ -7,8 +7,22 @@
  */
 package net.bioclipse.nm.domain;
 
-import net.bioclipse.core.domain.BioObject;
+import org.bitbucket.nanojava.data.MaterialType;
+import org.bitbucket.nanojava.data.Nanomaterial;
 
-public class Material extends BioObject {
+import net.bioclipse.core.domain.BioObject;
+import net.bioclipse.core.domain.IMaterial;
+
+public class Material extends BioObject implements IMaterial {
+
+	private Nanomaterial internalModel;
+
+	public Material() {
+		this.internalModel = new Nanomaterial(MaterialType.METALOXIDE);
+	}
+
+	public Nanomaterial getInternalModel() {
+		return internalModel;
+	}
 
 }

@@ -9,11 +9,16 @@
  */
 package net.bioclipse.nm.business;
 
+import java.io.UnsupportedEncodingException;
+
 import net.bioclipse.core.PublishedClass;
 import net.bioclipse.core.PublishedMethod;
 import net.bioclipse.core.Recorded;
+import net.bioclipse.core.business.BioclipseException;
 import net.bioclipse.managers.business.IBioclipseManager;
 import net.bioclipse.nm.domain.Material;
+
+import org.eclipse.core.runtime.CoreException;
 
 @PublishedClass(
     value="Manager to handle (nano)materials."
@@ -27,4 +32,9 @@ public interface INmManager extends IBioclipseManager {
     )
     public Material newMaterial();
 
+    @Recorded
+    @PublishedMethod(params = "IMaterial material, String filename",
+            methodSummary="Saves a material to file.")
+    public void save(Material material, String filename)
+    	          throws BioclipseException, UnsupportedEncodingException, CoreException;
 }
