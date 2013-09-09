@@ -19,5 +19,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.log4j
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- jar/nanojava-0.0.1-SNAPSHOT.jar,
- jar/cmlxom-3.1.jar
+ jar/nanojava-1.1.0-SNAPSHOT.jar
