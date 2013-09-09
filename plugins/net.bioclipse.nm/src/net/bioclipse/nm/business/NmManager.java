@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 
 import net.bioclipse.core.ResourcePathTransformer;
 import net.bioclipse.core.business.BioclipseException;
+import net.bioclipse.core.domain.IMaterial;
 import net.bioclipse.managers.business.IBioclipseManager;
 import net.bioclipse.nm.domain.Material;
 import nu.xom.Document;
@@ -62,15 +63,18 @@ public class NmManager implements IBioclipseManager {
     	throw new BioclipseException("Document is not in the NMX format.");
     }
 
-    public void save(Material material, String filename)
-    throws UnsupportedEncodingException, CoreException {
+    public void save(IMaterial material, String filename)
+    throws UnsupportedEncodingException, CoreException, BioclipseException {
     	save(material, ResourcePathTransformer.getInstance().transform(filename), null);
     }
 
-    public void save(Material material, IFile target, IProgressMonitor monitor)
-    throws UnsupportedEncodingException, CoreException {
+    public void save(IMaterial imaterial, IFile target, IProgressMonitor monitor)
+    throws UnsupportedEncodingException, CoreException, BioclipseException {
     	if (monitor == null) monitor = new NullProgressMonitor();
+    	if (!(imaterial instanceof Material))
+    		throw new BioclipseException("Currently I can only save Material implementations of IMaterial.");
 
+    	Material material = (Material)imaterial;
     	CMLMolecule cmlMaterial = Serializer.toCML(material.getInternalModel());
     	if (target.exists()) {
             target.setContents(

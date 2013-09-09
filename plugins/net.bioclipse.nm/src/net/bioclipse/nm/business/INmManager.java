@@ -15,6 +15,7 @@ import net.bioclipse.core.PublishedClass;
 import net.bioclipse.core.PublishedMethod;
 import net.bioclipse.core.Recorded;
 import net.bioclipse.core.business.BioclipseException;
+import net.bioclipse.core.domain.IMaterial;
 import net.bioclipse.managers.business.IBioclipseManager;
 import net.bioclipse.nm.domain.Material;
 
@@ -28,14 +29,14 @@ public interface INmManager extends IBioclipseManager {
     @Recorded
     @PublishedMethod(
         methodSummary=
-            "Returns the security token for the service."
+            "Creates a new material."
     )
     public Material newMaterial();
 
     @Recorded
     @PublishedMethod(params = "IMaterial material, String filename",
             methodSummary="Saves a material to file in the NMX format.")
-    public void save(Material material, String filename)
+    public void save(IMaterial material, String filename)
     	          throws BioclipseException, UnsupportedEncodingException, CoreException;
     
     @Recorded
