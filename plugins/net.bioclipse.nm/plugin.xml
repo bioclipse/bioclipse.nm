@@ -10,4 +10,15 @@
       </scriptContribution>
    </extension>
 
+   <extension
+          point="org.eclipse.core.contenttype.contentTypes">
+       <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           id="net.bioclipse.contenttypes.nmx"
+           name="NanoMaterials Markup Language (CML-based)"
+           file-extensions="nmx"
+           priority="normal">
+       </content-type>
+   </extension>
+
 </plugin>
