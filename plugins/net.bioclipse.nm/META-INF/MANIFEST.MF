@@ -22,4 +22,5 @@ Import-Package: nu.xom;version="1.1.0",
  org.xmlcml.cml.element
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- jar/nanojava-1.1.0-SNAPSHOT.jar
+ jar/nanojava-1.1.0-SNAPSHOT.jar,
+ jar/jqudt-1-SNAPSHOT.jar
