@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.springframework.osgi.aopalliance.osgi,
  org.eclipse.core.resources,
  org.openscience.cdk.data,
- org.openscience.cdk.formula
+ org.openscience.cdk.formula,
+ slf4j.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: nu.xom;version="1.1.0",
  org.apache.log4j,
@@ -22,5 +23,6 @@ Import-Package: nu.xom;version="1.1.0",
  org.xmlcml.cml.element
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
- jar/nanojava-1.1.0-SNAPSHOT.jar,
- jar/jqudt-1-SNAPSHOT.jar
+ jar/jqudt-1.1.0-SNAPSHOT.jar,
+ jar/nanojava-1.2.0-SNAPSHOT.jar,
+ jar/openrdf-sesame-2.6.5-onejar.jar
