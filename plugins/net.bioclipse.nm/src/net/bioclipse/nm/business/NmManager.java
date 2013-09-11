@@ -10,6 +10,7 @@
 package net.bioclipse.nm.business;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Collections;
@@ -138,16 +139,13 @@ public class NmManager implements IBioclipseManager {
     		Material material = new Material(nmaterial);
     		return material;
     	} else if (rootElem instanceof CMLList) { // requirement; output from AMBIT
-    		System.out.println("x");
     		CMLList list = (CMLList)rootElem;
     		List<CMLElement> childElements = list.getChildCMLElements();
     		System.out.println("childs: " + childElements.size());
     		if (childElements.size() == 1) {
-        		System.out.println("xx");
     			CMLElement element = childElements.get(0);
     			System.out.println("child: " + element.getLocalName());
     			if (element instanceof CMLMolecule) {
-    	    		System.out.println("xxx");
     				CMLMolecule cmlMaterial = (CMLMolecule)element;
     				Nanomaterial nmaterial = Deserializer.fromCML(cmlMaterial);
     				Material material = new Material(nmaterial);
@@ -172,17 +170,31 @@ public class NmManager implements IBioclipseManager {
 
     	Material material = (Material)imaterial;
     	CMLMolecule cmlMaterial = Serializer.toCML(material.getInternalModel());
-    	if (target.exists()) {
+    	
+    	byte[] cmlContent = new byte[0];
+    	ByteArrayOutputStream output = new ByteArrayOutputStream();
+		try {
+			nu.xom.Serializer serializer = new nu.xom.Serializer(output, "ISO-8859-1");
+			serializer.setIndent(2);
+			Document doc = new Document(cmlMaterial);
+			serializer.write(doc);
+			output.flush();
+			System.out.println("content: " + output.toString("ISO-8859-1"));
+			cmlContent = output.toByteArray();
+		} catch (Exception exception) {
+			// default to the toXML method
+			System.out.println(exception.getMessage());
+			cmlContent = cmlMaterial.toXML().getBytes();
+		}
+		if (target.exists()) {
             target.setContents(
-                    new ByteArrayInputStream(cmlMaterial.toXML()
-                            .getBytes("US-ASCII")),
+                    new ByteArrayInputStream(cmlContent),
                             false,
                             true, // overwrite
                             monitor );
         } else {
             target.create(
-                    new ByteArrayInputStream(cmlMaterial.toXML()
-                            .getBytes("US-ASCII")),
+                    new ByteArrayInputStream(cmlContent),
                             false,
                             monitor );
         }
