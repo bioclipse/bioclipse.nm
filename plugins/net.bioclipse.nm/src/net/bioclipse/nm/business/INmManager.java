@@ -10,6 +10,8 @@
 package net.bioclipse.nm.business;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 import java.util.Set;
 
 import net.bioclipse.core.PublishedClass;
@@ -59,6 +61,23 @@ public interface INmManager extends IBioclipseManager {
     @PublishedMethod(params = "String nmxFile",
             methodSummary="Parses a material from a NMX encoded String.")
     public Material fromString(String nmxFile)
+	          throws BioclipseException, UnsupportedEncodingException, CoreException;
+
+    @Recorded
+    @PublishedMethod(methodSummary="Creates an empty material list.")
+    public List<IMaterial> createList()
+        throws BioclipseException, InvocationTargetException;
+
+    @Recorded
+    @PublishedMethod(params = "IMaterial material",
+            methodSummary="Returns the material as NMX encoded String.")
+    public String asNMX(IMaterial material)
+	          throws BioclipseException, UnsupportedEncodingException, CoreException;
+
+    @Recorded
+    @PublishedMethod(params = "List<IMaterial> materials",
+            methodSummary="Returns the material as NMX encoded String.")
+    public String asNMX(List<IMaterial> materials)
 	          throws BioclipseException, UnsupportedEncodingException, CoreException;
 
     @Recorded

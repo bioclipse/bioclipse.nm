@@ -13,6 +13,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.Set;
 import net.bioclipse.core.ResourcePathTransformer;
 import net.bioclipse.core.business.BioclipseException;
 import net.bioclipse.core.domain.IMaterial;
+import net.bioclipse.core.domain.RecordableList;
 import net.bioclipse.managers.business.IBioclipseManager;
 import net.bioclipse.nm.domain.Material;
 import nu.xom.Document;
@@ -117,6 +119,29 @@ public class NmManager implements IBioclipseManager {
     	}
     	
     	throw new BioclipseException("Document is not in the NMX format.");
+    }
+
+    public String asNMX(IMaterial imaterial)
+	    throws BioclipseException, UnsupportedEncodingException, CoreException {
+    	Material material = (Material)imaterial;
+    	CMLMolecule cmlMaterial = Serializer.toCML(material.getInternalModel());
+    	return cmlMaterial.toXML();
+    }
+
+    public String asNMX(List<IMaterial> materials)
+    	throws BioclipseException, UnsupportedEncodingException, CoreException {
+    	CMLList list = new CMLList();
+    	for (IMaterial imaterial : materials) {
+    		Material material = (Material)imaterial;
+    		CMLMolecule cmlMaterial = Serializer.toCML(material.getInternalModel());
+    		list.appendChild(cmlMaterial);
+    	}
+    	return list.toXML();
+    }
+  
+    public List<IMaterial> createList() throws BioclipseException,
+    InvocationTargetException {
+    	return new RecordableList<IMaterial>();
     }
 
     public Material fromString(String nmxFile, IProgressMonitor monitor)
