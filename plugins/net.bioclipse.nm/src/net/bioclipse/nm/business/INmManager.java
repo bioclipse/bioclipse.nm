@@ -22,7 +22,9 @@ import net.bioclipse.core.domain.IMaterial;
 import net.bioclipse.managers.business.IBioclipseManager;
 import net.bioclipse.nm.domain.Material;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 
 import com.github.jqudt.Unit;
 
@@ -56,6 +58,7 @@ public interface INmManager extends IBioclipseManager {
             methodSummary="Loads a material from a NMX file.")
     public Material load(String filename)
 	          throws BioclipseException, UnsupportedEncodingException, CoreException;
+    public Material load(IFile file, IProgressMonitor monitor);
 
     @Recorded
     @PublishedMethod(params = "String nmxFile",
