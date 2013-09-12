@@ -6,7 +6,12 @@ Bundle-Version: 2.5.0.qualifier
 Bundle-Activator: net.bioclipse.nm.Activator
 Export-Package: net.bioclipse.nm,
  net.bioclipse.nm.business,
- net.bioclipse.nm.domain
+ net.bioclipse.nm.domain,
+ org.bitbucket.nanojava.appdomain,
+ org.bitbucket.nanojava.data,
+ org.bitbucket.nanojava.data.measurement,
+ org.bitbucket.nanojava.descriptor,
+ org.bitbucket.nanojava.io
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  net.bioclipse.core,
