@@ -12,14 +12,14 @@
                name="Nano Toxicity">
          </endpoint>
          
-      <test
+      <!--test
             id="nm.EnergyBandModel"
             name="EnergyBandModel"
             endpoint="net.bioclipse.ds.nanotox"
             class="net.bioclipse.nm.ds.models.EnergyBandModel"
             override="true">
             
-      </test>
+      </test-->
    </extension>
 
 

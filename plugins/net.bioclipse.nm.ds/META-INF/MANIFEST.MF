@@ -26,4 +26,5 @@ Require-Bundle: net.bioclipse.ds,
  org.openscience.cdk.qsar
 Bundle-ClassPath: nanojava-1.1.0-SNAPSHOT.jar,
  .
+Import-Package: org.openscience.cdk.qsar.result
 
