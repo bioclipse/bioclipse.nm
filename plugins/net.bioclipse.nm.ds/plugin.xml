@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="net.bioclipse.decisionsupport">
+         
+         <endpoint
+               id="net.bioclipse.ds.nanotox"
+               description="Nano Materials Toxicity"
+               icon="icons/radioactive.png"
+               name="Nano Toxicity">
+         </endpoint>
+         
+      <test
+            id="nm.EnergyBandModel"
+            name="EnergyBandModel"
+            endpoint="net.bioclipse.ds.nanotox"
+            class="net.bioclipse.nm.ds.models.EnergyBandModel"
+            override="true">
+            
+      </test>
+   </extension>
+
+
+
+</plugin>
