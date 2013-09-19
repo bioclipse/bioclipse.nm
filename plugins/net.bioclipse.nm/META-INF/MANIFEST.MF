@@ -4,7 +4,9 @@ Bundle-Name: Nanomaterials
 Bundle-SymbolicName: net.bioclipse.nm; singleton:=true
 Bundle-Version: 2.5.0.qualifier
 Bundle-Activator: net.bioclipse.nm.Activator
-Export-Package: net.bioclipse.nm, net.bioclipse.nm.business
+Export-Package: net.bioclipse.nm,
+ net.bioclipse.nm.business,
+ net.bioclipse.nm.domain
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  net.bioclipse.core,
