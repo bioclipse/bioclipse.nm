@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="net.bioclipse.nm.ui.editors.NMEditor"
+            contributorClass="net.bioclipse.nm.ui.editors.NMEditorContributor"
+            extensions="nmx"
+            icon="icons/sample.gif"
+            id="net.bioclipse.nm.ui.editors.NMEditor"
+            name="Materials Editor">
+      </editor>
+   </extension>
+
+</plugin>
