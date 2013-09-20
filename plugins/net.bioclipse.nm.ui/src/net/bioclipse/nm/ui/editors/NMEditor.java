@@ -1,14 +1,10 @@
 package net.bioclipse.nm.ui.editors;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.bioclipse.core.business.BioclipseException;
 import net.bioclipse.nm.Activator;
 import net.bioclipse.nm.business.INmManager;
-import net.bioclipse.nm.business.NmManager;
 import net.bioclipse.nm.domain.Material;
 import net.bioclipse.nm.ui.editors.domain.Property;
 import net.bioclipse.nm.ui.editors.domain.ViewModel;
@@ -20,13 +16,11 @@ import org.eclipse.core.databinding.beans.BeansObservables;
 import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ObservableValueEditingSupport;
 import org.eclipse.jface.databinding.viewers.ViewerSupport;
-import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.TableViewer;
@@ -37,8 +31,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.ui.*;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
+import org.openscience.cdk.tools.manipulator.MolecularFormulaManipulator;
 
 /**
  * 
@@ -115,12 +113,20 @@ public class NMEditor extends EditorPart{
 			List<Property> props = new ArrayList<Property>();
 
 			Nanomaterial nanom = material.getInternalModel();
-//			props.add(new Property("Size", nanom.getSize().getConditions()getString()));
+			if (nanom.getChemicalComposition() != null) {
+				props.add(new Property("Chemical Formula",
+					MolecularFormulaManipulator.getString(nanom.getChemicalComposition()))
+				);
+			}
+			if (nanom.getSize() != null) {
+				props.add(new Property("Size", nanom.getSize().getString()));
+			}
 			props.add(new Property("Type", nanom.getType().name()));
 			props.add(new Property("Zeta Potential", nanom.getZetaPotential().getString()));
 
 			viewModel = new ViewModel(props);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new PartInitException(e.getMessage());
 		}
 

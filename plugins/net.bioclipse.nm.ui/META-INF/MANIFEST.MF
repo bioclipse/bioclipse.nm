@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.databinding,
  org.eclipse.core.databinding.beans,
  org.eclipse.core.databinding.property,
- org.openscience.cdk.formula;bundle-version="1.4.18"
+ org.openscience.cdk.formula,
+ org.openscience.cdk.interfaces
 Bundle-ClassPath: nanojava-1.1.0-SNAPSHOT.jar,
  .
 Export-Package: net.bioclipse.nm.ui.editors,
