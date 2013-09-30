@@ -18,7 +18,6 @@ Require-Bundle: org.eclipse.ui,
  net.sf.cglib,
  org.springframework.osgi.aopalliance.osgi,
  slf4j.api
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.log4j
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
